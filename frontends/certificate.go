@@ -1,7 +1,6 @@
 package frontends
 
 import (
-	"crypto"
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/pem"
@@ -9,10 +8,9 @@ import (
 	"time"
 )
 
-// A Certificate wraps a certificate and private key for use in a frontend.
+// A Certificate wraps a certificate for use in a frontend.
 type Certificate struct {
 	Certificate *tls.Certificate
-	PrivateKey  crypto.PrivateKey
 }
 
 // NewCertificate creates a new Certificate using the provided PEM encoded
