@@ -18,6 +18,10 @@ jobs:
     ####   /go/src/github.com/circleci/go-tool
     ####   /go/src/bitbucket.org/circleci/go-tool
     working_directory: /go/src/github.com/off-sync/platform-proxy-domain
+
+    environment:
+      TEST_RESULTS: /tmp/test-results
+
     steps:
       - checkout
 
