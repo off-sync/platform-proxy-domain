@@ -5,6 +5,7 @@ import "errors"
 
 // Errors
 var (
-	ErrFrontendURLMissing = errors.New("frontend URL missing")
-	ErrServiceNameMissing = errors.New("service name missing")
+	ErrFrontendNameMissing = errors.New("frontend name missing")
+	ErrFrontendURLMissing  = errors.New("frontend URL missing")
+	ErrServiceNameMissing  = errors.New("service name missing")
 )

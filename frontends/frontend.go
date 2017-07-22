@@ -4,6 +4,7 @@ import "net/url"
 
 // A Frontend defines how a Service is exposed through the Platform Proxy.
 type Frontend struct {
+	Name        string
 	URL         *url.URL
 	Certificate *Certificate
 	ServiceName string
@@ -11,7 +12,11 @@ type Frontend struct {
 
 // NewFrontend returns a Frontend by parsing the provided url. An error is
 // returned if the url cannot be parsed.
-func NewFrontend(frontendURL string, cert *Certificate, serviceName string) (*Frontend, error) {
+func NewFrontend(name, frontendURL string, cert *Certificate, serviceName string) (*Frontend, error) {
+	if name == "" {
+		return nil, ErrFrontendNameMissing
+	}
+
 	if frontendURL == "" {
 		return nil, ErrFrontendURLMissing
 	}
