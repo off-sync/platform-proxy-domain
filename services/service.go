@@ -10,14 +10,22 @@ type Service struct {
 
 // NewService creates a new service. It parses all provided server strings to
 // URLs, returning an error if one fails to parse.
-func NewService(name string, servers ...string) (*Service, error) {
-	service := &Service{
-		Name:    name,
-		Servers: make([]*url.URL, len(servers)),
+func NewService(name string, serverURLs ...string) (*Service, error) {
+	if name == "" {
+		return nil, ErrServiceNameMissing
 	}
 
-	for i, server := range servers {
-		u, err := url.Parse(server)
+	if len(serverURLs) < 1 {
+		return nil, ErrServerURLsMissing
+	}
+
+	service := &Service{
+		Name:    name,
+		Servers: make([]*url.URL, len(serverURLs)),
+	}
+
+	for i, serverURL := range serverURLs {
+		u, err := url.Parse(serverURL)
 		if err != nil {
 			return nil, err
 		}

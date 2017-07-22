@@ -8,8 +8,8 @@ This project distinguishes the following aggregate roots:
 
 ## Services
 
-A Service defines a functionality provided by one or more backend servers.
+A [Service](https://godoc.org/github.com/off-sync/platform-proxy-domain/services#Service) defines a functionality provided by one or more backend servers.
 
 ## Frontends
 
-A Frontend defines how a Service is exposed through the Platform Proxy.
+A [Frontend](https://godoc.org/github.com/off-sync/platform-proxy-domain/frontends#Frontend) defines how a Service is exposed through the Platform Proxy.
