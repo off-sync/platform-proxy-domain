@@ -14,4 +14,8 @@ A [Service](https://godoc.org/github.com/off-sync/platform-proxy-domain/services
 
 A [Frontend](https://godoc.org/github.com/off-sync/platform-proxy-domain/frontends#Frontend) defines how a Service is exposed through the Platform Proxy.
 
+<<<<<<< HEAD
 A Frontend can contain an optional [Certificate](https://godoc.org/github.com/off-sync/platform-proxy-domain/frontends#Certificate).
+=======
+An Frontend can contain an optional [Certificate](https://godoc.org/github.com/off-sync/platform-proxy-domain/frontends#Certificate).
+>>>>>>> 5132f87354f8813a346c9a945472eaed1c5eb3e0
