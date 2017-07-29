@@ -31,6 +31,7 @@ func NewFrontend(name, frontendURL string, cert *Certificate, serviceName string
 	}
 
 	return &Frontend{
+		Name:        name,
 		URL:         u,
 		Certificate: cert,
 		ServiceName: serviceName,
