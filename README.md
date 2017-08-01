@@ -1,5 +1,7 @@
 # Off-Sync.com Platform Proxy Domain
 
+[![CircleCI](https://circleci.com/gh/off-sync/platform-proxy-domain.svg?style=svg)](https://circleci.com/gh/off-sync/platform-proxy-domain) [![Go Report Card](https://goreportcard.com/badge/off-sync/platform-proxy-domain)](https://goreportcard.com/report/off-sync/platform-proxy-domain)
+
 The domain project contains the models for the Off-Sync.com Platform Proxy.
 
 This project distinguishes the following aggregate roots:
