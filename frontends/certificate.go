@@ -4,8 +4,15 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/pem"
+	"errors"
 	"fmt"
 	"time"
+)
+
+// Errors.
+var (
+	ErrInvalidCertificatePEM = errors.New("invalid certificate PEM")
+	ErrInvalidKeyPEM         = errors.New("invalid key PEM")
 )
 
 // A Certificate wraps a certificate for use in a frontend.
@@ -23,6 +30,10 @@ func NewCertificate(certPEM, keyPEM []byte) (*Certificate, error) {
 		if p, rest = pem.Decode(rest); p != nil {
 			certs = append(certs, p.Bytes)
 		}
+
+		if len(rest) == len(certPEM) {
+			return nil, ErrInvalidCertificatePEM
+		}
 	}
 
 	if len(certs) < 1 {
@@ -36,7 +47,7 @@ func NewCertificate(certPEM, keyPEM []byte) (*Certificate, error) {
 
 	p, _ = pem.Decode(keyPEM)
 	if p == nil {
-		return nil, fmt.Errorf("unable to decode private key")
+		return nil, ErrInvalidKeyPEM
 	}
 
 	key, err := x509.ParsePKCS1PrivateKey(p.Bytes)

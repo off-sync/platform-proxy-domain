@@ -13,6 +13,12 @@ func TestNewCertificate(t *testing.T) {
 	assert.Nil(t, err)
 }
 
+func TestNewCertificateShouldReturnErrorOnInvalidPEMData(t *testing.T) {
+	_, err := NewCertificate([]byte("NOT PEM"), []byte("NOT PEM"))
+
+	assert.NotNil(t, err)
+}
+
 func TestNewCertificateShouldReturnErrorOnMissingCertData(t *testing.T) {
 	_, err := NewCertificate([]byte(""), []byte(keyPEM))
 
