@@ -2,9 +2,20 @@ package services
 
 import "net/url"
 
+// ServiceType is used to described the types of services.
+type ServiceType string
+
+// Possible ServiceType values.
+const (
+	ServiceTypeServer      ServiceType = "server"
+	ServiceTypeSystem      ServiceType = "system"
+	ServiceTypeUnsupported ServiceType = "unsupported"
+)
+
 // Service defines a functionality provided by one or more backend servers.
 type Service struct {
 	Name    string
+	Type    ServiceType
 	Servers []*url.URL
 }
 
