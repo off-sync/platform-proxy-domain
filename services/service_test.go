@@ -66,3 +66,12 @@ func TestNewServiceShouldReturnErrorOnInvalidServerURL(t *testing.T) {
 	assert.Nil(t, s)
 	assert.NotNil(t, err)
 }
+
+func TestNewServiceShouldIgnoreEmptyServerURLs(t *testing.T) {
+	s, err := NewService("name", ServiceTypeServer, "", "http://10.0.0.2")
+
+	assert.NotNil(t, s)
+	assert.Nil(t, err)
+
+	assert.Equal(t, 1, len(s.Servers))
+}

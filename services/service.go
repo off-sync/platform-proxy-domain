@@ -57,18 +57,21 @@ func NewService(name string, serviceType ServiceType, serverURLs ...string) (*Se
 	}
 
 	service := &Service{
-		Name:    name,
-		Type:    serviceType,
-		Servers: make([]*url.URL, len(serverURLs)),
+		Name: name,
+		Type: serviceType,
 	}
 
-	for i, serverURL := range serverURLs {
+	for _, serverURL := range serverURLs {
+		if serverURL == "" {
+			continue
+		}
+
 		u, err := url.Parse(serverURL)
 		if err != nil {
 			return nil, err
 		}
 
-		service.Servers[i] = u
+		service.Servers = append(service.Servers, u)
 	}
 
 	return service, nil
